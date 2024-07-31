@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 
 export default function Pokemon() {
@@ -5,9 +6,9 @@ export default function Pokemon() {
     const [pokemonError, setPokemonError] = useState("")
     const handle = (e) =>{
         e.preventDefault()
-        fetch("https://pokeapi.co/api/v2/pokemon?limit=807&offset=0")
+        axios.get("https://pokeapi.co/api/v2/pokemon?limit=807&offset=0")
         .then(response =>{
-            return response.json();
+            return response.data;
         })
         .then(data => {
             setPokemon(data.results)

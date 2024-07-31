@@ -70,3 +70,10 @@ button:focus-visible {
   width: 100px;
   height: 100px;
 }
+
+.boxes{
+  display: flex;
+  justify-content: center;
+  
+  
+}
