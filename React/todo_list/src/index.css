@@ -28,6 +28,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #213547;
+  color: white;
 }
 
 h1 {
@@ -66,4 +68,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+#t{
+  max-height: 300px;
+  overflow-x:auto;
+  border: 1px solid #cecece;
+  padding: 10px;
+  border-radius: 5px;
+  width: 450px;
+}
 
+.ch{
+position: relative;
+right: 10px;
+}
