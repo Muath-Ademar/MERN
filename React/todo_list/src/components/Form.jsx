@@ -5,16 +5,10 @@ import Form from 'react-bootstrap/Form';  // Import Form from react-bootstrap
 
 
 const TaskForm = (props) => {
+const localValue = JSON.parse(localStorage.getItem("ITEM"))
 const [task, setTask] = useState("")
-const [tasks, setTasks] = useState(() =>{
-const localValue= localStorage.getItem("ITEM")
-if(localValue == null){
-    return []
-}
-else{
-    return JSON.parse(localValue)
-}
-})
+const [tasks, setTasks] = useState(localValue)
+
 useEffect(() =>{
     localStorage.setItem("ITEM", JSON.stringify(tasks))
 }, [tasks])
@@ -63,7 +57,7 @@ return (
             
         <p style={{ textDecoration:task.completed ? 'line-through' : 'none' }}>{task.task}</p> 
         <div className="d-flex allign-items center">
-        <input  aria-label="Checkbox for following text input"  onClick={(e) =>handleChecked(task.id, e.target.checked)}  checked = {task.completed} type="checkbox" className="ch"/>
+        <input  aria-label="Checkbox for following text input"  onChange={(e) =>handleChecked(task.id, e.target.checked)}  checked = {task.completed} type="checkbox" className="ch"/>
         
         <Button variant="outline-danger"  onClick={()=> handleDelete(task.id) }>Delete</Button>
         </div>
