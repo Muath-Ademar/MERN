@@ -1,30 +1,28 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+import SearchForm from './SearchForm';
 
-const StarWarsApi = (props) => {
-    const [StarWars, setStarWars] = useState([])
-    const [Error, setError] = useState("")
-    
-        
-        axios.get("https://swapi.dev/api/people")
+const StarWarsApi = () => {
+    const {id} = useParams()
+    const [starWars, setStarWars] = useState([])
+    useEffect( () => {
+        axios.get("https://swapi.dev/api/people/" + id + "/" )
         .then(response => {
-            setStarWars(response.data.results)
-            setError("")
+            setStarWars(response.data)
+            
         })
-        .catch(Error=>{
-            setError("Failed get the Star Wars Charecters, please try again")
-            setStarWars([])
-        })
-    
+
+        }, [id])
     return (
 
     <div>
-                {Error && <p style={{ color: 'red' }}>{Error}</p>}
-                <ul>
-                    {StarWars.map((s, index) => (
-                        <li key={index}>{s.name}</li>
-                    ))}
-                </ul>
+        <SearchForm/>
+        <h1>{starWars.name}</h1>
+        <p>Heigth: {starWars.height}</p>
+        <p>Hair color: {starWars.mass}</p>
+        <p>Eye color: {starWars.hair_color}</p>
+        <p>Skin color: {starWars.skin_color}</p>
     </div>
     
     )

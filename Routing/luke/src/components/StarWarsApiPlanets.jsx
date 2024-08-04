@@ -1,27 +1,26 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+import SearchForm from './SearchForm';
 const StarWarsApiPlanets = (props) => {
-    const [StarWars, setStarWars] = useState([])
-    const [Error, setError] = useState("")
-        axios.get("https://swapi.dev/api/planets")
+    const {planetId} = useParams()
+    const [planets, setPlanets] = useState([])
+    useEffect( () =>{
+        axios.get("https://swapi.dev/api/planets/" + planetId + "/")
         .then(response => {
-            setStarWars(response.data.results)
-            setError("")
-        })
-        .catch(Error=>{
-            setError("Failed get the planets, please try again")
-            setStarWars([])
-        })
+            setPlanets(response.data)
+            
+        }) }, [planetId])
+       
     return (
 
             <div>
-                {Error && <p style={{ color: 'red' }}>{Error}</p>}
-                <ul>
-                    {StarWars.map((s, index) => (
-                        <li key={index}>{s.name}</li>
-                    ))}
-                </ul>
+                <SearchForm/>
+                <h1>{planets.name}</h1>
+                <p>Planet Climate: {planets.climate}</p>
+                <p>Planet terrain: {planets.terrain}</p>
+                <p>Planet Surface Water: {planets.surface_water}</p>
+                <p>Planet population: {planets.population}</p>
             </div>
     )
 }
