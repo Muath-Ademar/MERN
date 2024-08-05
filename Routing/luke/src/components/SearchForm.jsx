@@ -17,8 +17,8 @@ const SearchForm = () => {
             navigate("/error")
             return;
         }
-        const url = option.replace("id", id)
-        navigate(url)
+    
+        navigate(""+option+""+id);
         
         
     }
@@ -29,8 +29,8 @@ const SearchForm = () => {
             <form onSubmit={handleSubmit}>
             <select onChange={handleOptionChange} value={option}>
                 <option value={""}> Select </option>
-                <option value={"/people/id"}>People</option>
-                <option value={"/planets/id" }>Planets</option>
+                <option value={"/people/"}>People</option>
+                <option value={"/planets/" }>Planets</option>
             </select>
             <input type="number" value={id} onChange={handleIdChange} />
             <input type="submit" value={"Search"} />
