@@ -1,0 +1,52 @@
+ db.students.insertOne({name:"Muath Ademar", home_state:"Broklyn", lucky_number: 7 , birthday: {month: 10, day: 31, year: 2001}})
+
+
+ db.students.insertOne({ name: "Matt", home_state: "new York", lucky_number: 6, birthday: { month: 7, day:10, year: 2001 } })
+
+ db.students.insertOne({ name: "Toti", home_state: "LA", lucky_number: 13, birthday: { month: 6, day:10, year: 1998 } })
+
+ db.students.insertOne({ name: "Mark", home_state: "Florida", lucky_number: 17, birthday: { month: 9, day:10, year: 2002 } })
+
+
+ db.students.insertOne({ name: "Mike", home_state: "Colorado", lucky_number: 19, birthday: { month: 10, day:11, year: 2003 } })
+
+
+
+db students.find()
+
+
+db.students.find({home_state:"Florida"})
+
+db.students.find({home_state:"Colorado"})
+
+db.students.find({lucky_number: {$gt: 3}})
+
+
+db.students.updateMany({}, { $set: { interests: ["coding", "brunch", "MongoDB"] } })
+
+
+db.students.updateOne({_id: ObjectId("66b33f5533d0ab990e0173b4")}, {$set:{interests:["coding", "Video Games", "Football"]}})
+
+
+
+db.students.updateOne({name:"Mike"}, {$set:{interests:["Space", "BasketBall", "Reading"]}})
+
+db.students.updateOne({name:"Mike"}, {$set:{interests:["Space", "BasketBall", "Reading", "Taxes"]}})
+
+db.students.updateOne({name: "Mike"}, {$pull: {interests: 'Taxes'}})
+
+
+db.students.findOneAndDelete({name:'Mike'})
+
+
+ db.students.findOneAndDelete({lucky_number:6})
+
+db.students.findOneAndDelete({home_state:'Florida'})
+
+db.students.updateMany({}, { $set: { number_of_belts: 0  } })
+
+db.students.updateOne({home_state: "LA"}, {$inc: {number_of_belts: 1}})
+
+
+db.students.updateMany({}, { $currentDate: {Updated_at: true}})
+

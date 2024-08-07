@@ -32,21 +32,34 @@ const createCompany = () => {
     return UserFake;
 }
 
+var users=[]
+var comapnies = []
 
-
-
+//  create comapny include all companes 
 
 app.get("/api/users/new", (req, res)=> {
-    res.json(createUser())
+    const newUser = createUser()
+    users.push(newUser)
+    res.json(newUser)
 }) 
 
 app.get("/api/companies/new", (req, res)=> {
-    res.json(createCompany())
+    const newCompany = createCompany()
+    comapnies.push(newCompany)
+    res.json(newCompany)
 }) 
 
 app.get("/api/user/company", (req, res)=> {
     res.json({company:createCompany(), user:createUser()})
 }) 
+
+app.get("/api/users", (req, res)=> {
+    res.json(users)
+}) 
+
+app.get("/api/companies", (req, res) => {
+    res.json(comapnies)
+})
 
 
 

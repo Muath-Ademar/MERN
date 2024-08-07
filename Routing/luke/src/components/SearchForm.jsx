@@ -5,12 +5,7 @@ const SearchForm = () => {
     const navigate = useNavigate();
     const [option, setOption] = useState("")
     const [id, setId] = useState("")
-    const handleIdChange = (e) => {
-        setId(e.target.value)
-    }
-    const handleOptionChange = (e) =>{
-        setOption(e.target.value)
-    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if(id  == "" || option == "" ){
@@ -27,12 +22,12 @@ const SearchForm = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-            <select onChange={handleOptionChange} value={option}>
+            <select onChange={(e) => setOption(e.target.value)} value={option}>
                 <option value={""}> Select </option>
                 <option value={"/people/"}>People</option>
                 <option value={"/planets/" }>Planets</option>
             </select>
-            <input type="number" value={id} onChange={handleIdChange} />
+            <input type="number" value={id} onChange={(e) => se(e.target.value)} />
             <input type="submit" value={"Search"} />
             </form>
         </div>
