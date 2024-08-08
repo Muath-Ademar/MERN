@@ -4,7 +4,7 @@ import axios from 'axios';
 export default () => {
     //keep track of what is being typed via useState hook
     const [title, setTitle] = useState(""); 
-    const [price, setPrice] = useState("");
+    const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
     //handler when the form is submitted
     const onSubmitHandler = e => {

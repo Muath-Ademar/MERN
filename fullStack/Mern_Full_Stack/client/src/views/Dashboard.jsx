@@ -15,11 +15,15 @@ export default () => {
         .catch(err => console.error(err))
         
     },[]);
+    const removeFromDom = id => {
+        setProducts(products.filter(product => product._id != id));
+    }
+
 
     return (
         <div>
             <ProductForm/>
-            {loaded && <Display products={products}/>}
+            {loaded && <Display products={products} removeFromDom={removeFromDom}/>}
         </div>
     )
 }
