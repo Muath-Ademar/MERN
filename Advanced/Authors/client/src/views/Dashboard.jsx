@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import AuthorForm from '../components/AuthorForm';
 import { useNavigate } from 'react-router-dom';
-
-
-
-
 export default () => {
     const [authors, setAuthors] = useState([]);
     const [errors, setErrors] = useState([])
