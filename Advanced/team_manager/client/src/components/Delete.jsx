@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react'
+import { Button } from 'react-bootstrap';
 
 const Delete = (props) => {
     const { playerId, successCallback } = props;
@@ -11,7 +12,7 @@ const Delete = (props) => {
         
   return (
     <div>
-      <button onClick ={deletePlayer}>Delete</button>
+      <Button variant="outline-danger" onClick ={deletePlayer}>Delete</Button>
     </div>
   )
 }

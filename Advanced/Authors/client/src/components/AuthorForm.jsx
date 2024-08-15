@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default props => {
     const { onSubmitProp } = props;
     const [userName, setUserName] = useState(props.initialUserName || "");
+    const navigate = useNavigate()
     
     useEffect(() => {
         setUserName(props.initialUserName || "");

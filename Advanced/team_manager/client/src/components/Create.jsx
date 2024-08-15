@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const Create = (props) => {
     const{onSubmitProp, intialName, intialPostion} = props 
@@ -17,21 +19,24 @@ const Create = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleCreate}>
-            <p>
-                <label>Player Name</label><br />
-                <input 
+
+    <Form onSubmit={handleCreate}>
+          <Form.Group className="mb-3" >
+          <Form.Label>Player Name</Form.Label>
+                <Form.Control 
                     type="text" 
                      value={playerName} 
                     onChange={(e) => { setPlayerName(e.target.value) }} />
-            </p>
-            <p>
-                <label> Prefered Position</label><br />
-                <input type="text" value={preferedPosition}
+          </Form.Group>
+            
+          <Form.Group className="mb-3">
+                <Form.Label> Prefered Position</Form.Label>
+                <Form.Control type="text" value={preferedPosition}
                 onChange={(e) => {setPreferedPosition(e.target.value)}} />
-            </p>
-            <input type="submit" value={"Add"} />
-      </form>
+          </Form.Group>
+            
+            <Button type="submit"  variant='primary' > Add </Button>
+      </Form>
     </div>
   )
 }
