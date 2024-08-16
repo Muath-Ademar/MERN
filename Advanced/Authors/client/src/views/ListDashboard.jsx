@@ -7,7 +7,8 @@ const ListDashboard = () => {
     useEffect(() => {
         axios.get('http://localhost:8000/api/authors')
             .then(res =>{ 
-                setAuthors(res.data)
+              const sorted = res.data.sort((a, b) => a.userName.localeCompare(b.userName))
+                setAuthors(sorted)
             });
     }, [])
     const removeFromDom = authorId => {
