@@ -1,20 +1,19 @@
 import { useState } from 'react'
-import DashBoard from './views/DashBoard'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
+import Create from './views/Create'
+import ShowList from './views/ShowList'
 import { Route, Router, Routes } from 'react-router-dom'
-import PlayerList from './components/PlayerList'
-import PlayerListDash from './views/PlayerListDash'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
     <Routes>
-      <Route path='/players/addplayers' element={<DashBoard/>}/>
-      <Route path='/players/list' element={<PlayerListDash/>}/>
+          <Route path='/' element={<Create/>}/>
+          <Route path='/players/list' element={<ShowList/>}/>
     </Routes>
-
     </>
   )
 }

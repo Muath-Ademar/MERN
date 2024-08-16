@@ -1,31 +1,31 @@
-const { response, request } = require('express');
-const {Player} = require('../models/player.model')
 
-
-module.exports.index = (request, response) => {
-    response.json({
-       message: "Hello World"
-    });
-}
-
+const Player = require('../models/player.model')
 
 module.exports.createPlayer = (request, response) => {
-    const {playerName , preferedPosition } = request.body;
+    const {name, position} = request.body
     Player.create({
-        playerName,
-        preferedPosition,
+        name,
+        position
     })
-        .then(players => response.json(players))
-        .catch(err => response.status(400).json(err));
+    .then(player => response.json(player))
+    .catch(err => response.status(400).json(err));
 }
 
-module.exports.getPlayers = (request, response) => {
+module.exports.getAllPlayers = (request, response) => {
     Player.find({})
-    .then(players => response.json(players))
-    .catch(err => response.status(400).json(err))
+        .then(persons => response.json(persons))
+        .catch(err => response.json(err))
 }
+
+
+module.exports.getPlayer = (request, response) => {
+    Player.findOne({_id:request.params.id})
+        .then(player => response.json(player))
+        .catch(err => response.json(err))
+}
+
 module.exports.deletePlayer = (request, response) => {
     Player.deleteOne({ _id: request.params.id })
-        .then(deleteConfirmation => response.json(deleteConfirmation))
-        .catch(err => response.json(err))
+        .then(deleteConfirmation => response.json(deleteConfirmation))
+        .catch(err => response.json(err))
 }
